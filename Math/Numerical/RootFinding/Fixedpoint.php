@@ -44,10 +44,12 @@
 // $Id$
 
 /**
- * File contains Math_Numerical_RootFinding base class.
+ * Driver file contains Math_Numerical_RootFinding_Bisection class to provide
+ * Fixed Point method root finding calculation.
  *
  * @author Firman Wandayandi <firman@php.net>
  * @package Math_Numerical_RootFinding
+ * @subpackage Methods
  * @category Math
  * @license http://www.opensource.org/licenses/bsd-license.php
  *          BSD License
@@ -56,67 +58,128 @@
 // {{{ Dependencies
 
 /**
- * Require PEAR for handling errors.
+ * Load Math_Numerical_RootFinding_Common as base class.
  */
-require_once 'PEAR.php';
+require_once 'Math/Numerical/RootFinding/Common.php';
 
 // }}}
 
 /**
- * Math_Numerical_RootFinding base class.
- *
- * This class intended for build API structure and abstract class members.
+ * Fixed Point method class.
  *
  * @author Firman Wandayandi <firman@php.net>
  * @package Math_Numerical_RootFinding
- * @abstract
+ * @subpackage Methods
  */
-class Math_Numerical_RootFinding
+class Math_Numerical_RootFinding_Fixedpoint
+extends Math_Numerical_RootFinding_Common
 {
-    // {{{ factory()
+    // {{{ Constructor
 
     /**
-     * Create new instance of RootFinding method class.
+     * PHP4 compatible constructor.
      *
-     * @param string $method Method name.
-     * @param array $options (optional) Options (options is available in
-     *                                  specified method class).
+     * @param array $options (optional) Options.
      *
-     * @return object New method's class on success or PEAR_Error on failure.
      * @access public
-     * @see Math_Numerical_RootFinding::set()
-     * @static
      */
-    function &factory($method, $options = null)
+    function Math_Numerical_RootFinding_Fixedpoint($options = null)
     {
-        $method = ucfirst(trim($method));
-        $filename = dirname(__FILE__) . '/RootFinding/' . $method . '.php';
+        parent::__construct($options);
+    }
 
-        if (!file_exists($filename)) {
-            return PEAR::raiseError('Driver file not found for ' .
-                                    '\'' . $method . '\' method');
+    // }}}
+    // {{{ infoCompute()
+
+    /**
+     * Print out parameters description for compute() function.
+     *
+     * @access public
+     */
+    function infoCompute()
+    {
+        print "<h2>Fixed Point::compute()</h2>\n" .
+
+              "<em>float</em> | <em>PEAR_Error</em> ".
+              "<strong>compute</strong>(<u>\$gxFunction</u>, <u>\$xR</u>)<br />\n" .
+
+              "<h3>Description</h3>\n" .
+
+              "<em>callback</em> <u>\$gxFunction</u> Callback g(x) " .
+              "equation (the modification of f(x), which g(x) = x) " .
+              "function or object/method tuple.<br>\n" .
+
+              "<em>float</em> <u>\$xR</u> Initial guess.<br>\n";
+    }
+
+    // }}}
+    // {{{ compute()
+
+    /**
+     * Fixed Point method.
+     *
+     * This method using g(x) (the modification of f(x), which g(x) = x).
+     *
+     * @param callback $gxFunction Callback g(x) equation function or
+     *                             object/method tuple.
+     * @param float $xR Initial guess.
+     *
+     * @return float|PEAR_Error root value on success or PEAR_Error on failure.
+     * @access public
+     * @see Math_Numerical_RootFinding_Common::validateEqFunction()
+     * @see Math_Numerical_RootFinding_Common::getEqResult()
+     * @see Math_Numerical_RootFinding_Common::isDivergentRow()
+     */
+    function compute($gxFunction, $xR)
+    {
+        // Validate g(x) equation function.
+        $err = Math_Numerical_RootFinding_Common::validateEqFunction($gxFunction);
+        if (PEAR::isError($err)) {
+            return $err;
         }
 
-        include_once $filename;
-        $classname = 'Math_Numerical_RootFinding_' . $method;
-        if (!class_exists($classname)) {
-            return PEAR::raiseError('Undefined class \'' . $classname . '\'');
-        }
+        // Sets maximum iteration and tolerance from options.
+        $maxIteration = $this->options['max_iteration'];
+        $errTolerance = $this->options['err_tolerance'];
 
-        $obj =& new $classname;
-        if (!is_object($obj) || !is_a($obj, $classname)) {
-            return PEAR::raiseError('Failed creating object from class '.
-                                    '\'' . $classname . '\'');
-        }
+        // Sets variable for saving errors during iteration, for divergent
+        // detection.
+        $epsErrors = array();
 
-        if ($options !== null) {
-            $err = $obj->set($options);
-            if (PEAR::isError($err)) {
-                return $err;
+        for($i = 0; $i < $maxIteration; $i++) {
+            // Calculate g(x[i]), where x[i] = $xR (Fixed Point's formula).
+            $xN = Math_Numerical_RootFinding_Common::getEqResult($gxFunction, $xR);
+
+            // xR is the root.
+            if ($xN == 0) {
+                $this->root = $xR;
+                break;
             }
-        }
 
-        return $obj;
+            // Compute error.
+            $this->epsError = abs(($xN - $xR) / $xN);
+            $epsErrors[] = $this->epsError;
+
+            // Detect for divergent rows.
+            if ($this->isDivergentRows($epsErrors) &&
+                $this->options['divergent_skip'])
+            {
+                return PEAR::raiseError('Iteration skipped, divergent rows detected');
+                break;
+            }
+
+            // Check for error tolerance, if lower than or equal with
+            // $errTolerance it is the root.
+            if ($this->epsError <= $errTolerance) {
+                $this->root = $xR;
+                break;
+            }
+
+            // Switch x[i+1] -> x[i], where: x[i] = $xR and x[i+1] = $xN.
+            $xR = $xN;
+        }
+        $this->iterationCount = $i;
+        return $this->root;
     }
 
     // }}}

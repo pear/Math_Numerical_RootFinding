@@ -5,30 +5,42 @@ $pkg = new PEAR_PackageFileManager;
 
 $packagedir = dirname(__FILE__);
 $self = basename(__FILE__);
-$category = 'Image';
+$category = 'Math';
 
-$packagedesc = "This package provide various numerical analysis methods for find root\n" .
-               "Available Methods:\n" .
-               "- Bisection\n" .
-               "- False Position\n" .
-               "- Fixed Point\n" .
-               "- Newton-Raphson\n" .
-               "- Secant\n";
+$packagedesc =
+'Math_Numerical_RootFinding is the package' . "\n" .
+'provide various Numerical Methods Root-Finding' . "\n" .
+'functions implemented in PHP, e.g Bisection,' . "\n" .
+'Newton-Raphson, Fixed Point, Secant etc.' . "\n";
 
-$packagenotes = "- Initial release of Math_Numerical_RootFinding\n" .
-                "- Divergency testing only available for first 3 rows\n";
+$packagenotes =
+'- changed license into BSD License' . "\n" .
+'- removed file \'Bracketing.php\'' . "\n" .
+'- removed file \'Open.php\'' . "\n" .
+'- introduce new abstract class' . "\n" .
+'  Math_Numerical_RootFinding_Common' . "\n" .
+'- renamed all method filenames to uppercase' . "\n" .
+'  first letter' . "\n" .
+'- fixed Bug #2897: Capitalization type in' . "\n" .
+'  falseposition.php' . "\n" .
+'- renamed all compute function names from' . "\n" .
+'  method name e.g bisection() into compute()' . "\n" .
+'- added new function infoCompute() to provide' . "\n" .
+'  information about compute function arguments' . "\n" .
+'- applied divergent testing into all methods' . "\n";
 
 $options = array(
     'doctype'           => 'D:\Net\www\htdocs\PEAR\PEAR\data\PEAR\package.dtd',
     'package'           => 'Math_Numerical_RootFinding',
+    'license'           => 'BSD License',
     'baseinstalldir'    => '',
-    'version'           => '0.1.0',
+    'version'           => '0.3.0',
     'packagedirectory'  => $packagedir,
     'pathtopackagefile' => $packagedir,
     'state'             => 'alpha',
     'filelistgenerator' => 'file',
     'notes'             => $packagenotes,
-    'summary'           => 'Numerical analysis root finding methods package',
+    'summary'           => 'Numerical Methods Root-Finding functions package',
     'description'       => $packagedesc,
     'ignore'            => array(
                             'package.xml',
@@ -57,8 +69,10 @@ $pkg->addRole('pkg', 'doc');
 $pkg->addRole('cls', 'doc');
 $pkg->addRole('proc', 'doc');
 $pkg->addRole('sh', 'script');
+$pkg->addRole('txt', 'doc');
 
-$pkg->addMaintainer('firman', 'lead', 'Firman Wandayandi', 'fwd@vfemail.net');
+$pkg->addDependency('php', '4.2.0', 'ge', 'php');
+$pkg->addMaintainer('firman', 'lead', 'Firman Wandayandi', 'firman@php.net');
 
 $e = $pkg->writePackageFile();
 if (PEAR::isError($e)) {
