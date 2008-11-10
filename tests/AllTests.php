@@ -11,7 +11,7 @@
  * @since      File available since Release 1.1.0a1
  */
 if (!defined('PHPUnit_MAIN_METHOD')) {
-	define('PHPUnit_MAIN_METHOD', 'PEAR_Size_AllTests::main');
+	define('PHPUnit_MAIN_METHOD', 'Math_Numerical_RootFinding_AllTests::main');
 }
 
 require_once 'PHPUnit/Framework/TestSuite.php';
