@@ -10,54 +10,31 @@
  * PHP versions 4 and 5
  *
  * LICENSE:
+ * Copyright (c) 2008 Firman Wandayandi <firman@php.net>
  *
- * BSD License
+ * This source file is subject to the BSD License license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.opensource.org/licenses/bsd-license.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to pear-dev@list.php.net so we can send you a copy immediately.
  *
- * Copyright (c) 2004-2006 Firman Wandayandi
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer.
- * 2. Redistributions in binary form must reproduce the above
- *    copyright notice, this list of conditions and the following
- *    disclaimer in the documentation and/or other materials provided
- *    with the distribution.
- * 3. Neither the name of Firman Wandayandi nor the names of
- *    contributors may be used to endorse or promote products derived
- *    from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
- * FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
- * COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
- * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
- * BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
- * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
- * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- *
- * @category Math
- * @package Math_Numerical_RootFinding
- * @subpackage Methods
- * @author Firman Wandayandi <firman@php.net>
- * @copyright Copyright (c) 2004-2006 Firman Wandayandi
- * @license http://www.opensource.org/licenses/bsd-license.php
- *          BSD License
- * @version CVS: $Id$
+ * @category    Math
+ * @package     Math_Numerical_RootFinding
+ * @subpackage  Methods
+ * @author      Firman Wandayandi <firman@php.net>
+ * @copyright   Copyright (c) 2004-2008 Firman Wandayandi
+ * @license     http://www.opensource.org/licenses/bsd-license.php
+ *              BSD License
+ * @version     CVS: $Id$
  */
 
 // }}}
 // {{{ Dependencies
 
 /**
- * Load Math_Numerical_RootFinding_Common as base class.
+ * Math_Numerical_RootFinding_Common
  */
 require_once 'Math/Numerical/RootFinding/Common.php';
 
@@ -67,14 +44,14 @@ require_once 'Math/Numerical/RootFinding/Common.php';
 /**
  * Fixed Point method class.
  *
- * @category Math
- * @package Math_Numerical_RootFinding
- * @subpackage Methods
- * @author Firman Wandayandi <firman@php.net>
- * @copyright Copyright (c) 2004-2006 Firman Wandayandi
- * @license http://www.opensource.org/licenses/bsd-license.php
- *          BSD License
- * @version Release: @package_version@
+ * @category    Math
+ * @package     Math_Numerical_RootFinding
+ * @subpackage  Methods
+ * @author      Firman Wandayandi <firman@php.net>
+ * @copyright   Copyright (c) 2004-2008 Firman Wandayandi
+ * @license     http://www.opensource.org/licenses/bsd-license.php
+ *              BSD License
+ * @version     Release: @package_version@
  */
 class Math_Numerical_RootFinding_FixedPoint
 extends Math_Numerical_RootFinding_Common
@@ -84,10 +61,10 @@ extends Math_Numerical_RootFinding_Common
     /**
      * Constructor.
      *
-     * @param array $options (optional) Options.
+     * @param   array   $options (optional)  Options.
      *
-     * @access public
-     * @see Math_Numerical_RootFinding_Common::Math_Numerical_RootFinding_Common()
+     * @access  public
+     * @see     Math_Numerical_RootFinding_Common::Math_Numerical_RootFinding_Common()
      */
     function Math_Numerical_RootFinding_FixedPoint($options = null)
     {
@@ -126,20 +103,20 @@ extends Math_Numerical_RootFinding_Common
      *
      * This method using g(x) (the modification of f(x), which g(x) = x).
      *
-     * @param callback $gxFunction Callback g(x) equation function or
-     *                             object/method tuple.
-     * @param float $xR Initial guess.
+     * @param   callback    $gxFunction  Callback g(x) equation function or
+     *                                   object/method tuple.
+     * @param   float       $xR Initial  guess.
      *
-     * @return float|PEAR_Error root value on success or PEAR_Error on failure.
-     * @access public
-     * @see Math_Numerical_RootFinding_Common::validateEqFunction()
-     * @see Math_Numerical_RootFinding_Common::getEqResult()
-     * @see Math_Numerical_RootFinding_Common::isDivergentRow()
+     * @return  float|PEAR_Error         Root value on success or PEAR_Error on failure.
+     * @access  public
+     * @see     Math_Numerical_RootFinding_Common::validateEqFunction()
+     * @see     Math_Numerical_RootFinding_Common::getEqResult()
+     * @see     Math_Numerical_RootFinding_Common::isDivergentRow()
      */
     function compute($gxFunction, $xR)
     {
         // Validate g(x) equation function.
-        $err = Math_Numerical_RootFinding_Common::validateEqFunction($gxFunction);
+        $err = Math_Numerical_RootFinding_Common::validateEqFunction($gxFunction, $xR);
         if (PEAR::isError($err)) {
             return $err;
         }
