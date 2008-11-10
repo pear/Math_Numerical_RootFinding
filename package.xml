@@ -1,175 +1,169 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE package SYSTEM "http://pear.php.net/dtd/package-1.0">
-<package version="1.0" packagerversion="1.4.6">
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.7.2" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+    http://pear.php.net/dtd/tasks-1.0.xsd
+    http://pear.php.net/dtd/package-2.0
+    http://pear.php.net/dtd/package-2.0.xsd">
  <name>Math_Numerical_RootFinding</name>
- <summary>Numerical Methods Root-Finding collection package</summary>
- <description>Math_Numerical_RootFinding is the package
-provide various Numerical Methods Root-Finding
-functions implemented in PHP, e.g Bisection .
-Newton-Raphson, Fixed Point, Secant etc
- </description>
- <maintainers>
-  <maintainer>
-   <user>firman</user>
-   <name>Firman Wandayandi</name>
-   <email>firman@php.net</email>
-   <role>lead</role>
-  </maintainer>
-  <maintainer>
-   <user>mfonda</user>
-   <name>Matthew Fonda</name>
-   <email>mfonda@php.net</email>
-   <role>lead</role>
-  </maintainer>
-  </maintainers>
- <release>
-  <version>1.0.0</version>
-  <date>2006-02-01</date>
-  <license>BSD License</license>
-  <state>stable</state>
-  <notes>* Fixed method name capitol bug in Math_Numerical_RootFinding::factory(), thanks to Keith Palmer Jr.
-* Now all method driver names are using insensitive-case alias
-* Converted all header comment block into current coding standard
-* Added Matthew Fonda as package co-lead
-* This is first stable version release
-  </notes>
-  <deps>
-   <dep type="php" rel="ge" version="4.2.0" optional="no"/>
-  </deps>
-  <filelist>
-   <dir name="/" baseinstalldir="">
-    <dir name="docs">
-     <dir name="examples">
-      <file role="doc" name="Bisection.php">
-       <replace type="package-info" from="@package_version@" to="version"/>
-      </file>
-      <file role="doc" name="FalsePosition.php">
-       <replace type="package-info" from="@package_version@" to="version"/>
-      </file>
-      <file role="doc" name="FixedPoint.php">
-       <replace type="package-info" from="@package_version@" to="version"/>
-      </file>
-      <file role="doc" name="Newton-Raphson.php">
-       <replace type="package-info" from="@package_version@" to="version"/>
-      </file>
-      <file role="doc" name="Newton-Raphson2.php">
-       <replace type="package-info" from="@package_version@" to="version"/>
-      </file>
-      <file role="doc" name="Ralston-Rabinowitz.php">
-       <replace type="package-info" from="@package_version@" to="version"/>
-      </file>
-      <file role="doc" name="Secant.php">
-       <replace type="package-info" from="@package_version@" to="version"/>
-      </file>
-     </dir> <!-- /docs/examples -->
-     <file role="doc" name="README.txt">
-      <replace type="package-info" from="@package_version@" to="version"/>
+ <channel>pear.php.net</channel>
+ <summary>Numerical Root-Finding methods package in PHP</summary>
+ <description>Math_Numerical_RootFinding is the package provide various number of Numerical
+Root-Finding Methods functions implemented in PHP.
+Supported methods:
+1. Bisection/Binary Chopping/Interval Halving/Bolzano
+2. False Position/Regula Falsi
+3. Fixed Point
+4. Netwon-Raphson
+5. Netwon-Raphson 2
+6. Ralston-Rabinowitz
+7. Secant</description>
+ <lead>
+  <name>Firman Wandayandi</name>
+  <user>firman</user>
+  <email>firman@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Matthew Fonda</name>
+  <user>mfonda</user>
+  <email>mfonda@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2008-11-10</date>
+ <time>15:39:45</time>
+ <version>
+  <release>1.1.0a1</release>
+  <api>1.0</api>
+ </version>
+ <stability>
+  <release>alpha</release>
+  <api>alpha</api>
+ </stability>
+ <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD License</license>
+ <notes>* Request #2897: added new parameter $guess to validateEqFunction()
+* Added unit tests
+* Examples files renamed to lower case</notes>
+ <contents>
+  <dir baseinstalldir="/" name="/">
+   <dir name="docs">
+    <dir name="examples">
+     <file name="bisection.php" role="doc">
+      <tasks:replace from="@package_version@" to="version" type="package-info" />
      </file>
-    </dir> <!-- /docs -->
-    <dir name="Math">
-     <dir name="Numerical">
-      <dir name="RootFinding">
-       <file role="php" name="Bisection.php">
-        <replace type="package-info" from="@package_version@" to="version"/>
-       </file>
-       <file role="php" name="Common.php">
-        <replace type="package-info" from="@package_version@" to="version"/>
-       </file>
-       <file role="php" name="FalsePosition.php">
-        <replace type="package-info" from="@package_version@" to="version"/>
-       </file>
-       <file role="php" name="FixedPoint.php">
-        <replace type="package-info" from="@package_version@" to="version"/>
-       </file>
-       <file role="php" name="NewtonRaphson.php">
-        <replace type="package-info" from="@package_version@" to="version"/>
-       </file>
-       <file role="php" name="NewtonRaphson2.php">
-        <replace type="package-info" from="@package_version@" to="version"/>
-       </file>
-       <file role="php" name="RalstonRabinowitz.php">
-        <replace type="package-info" from="@package_version@" to="version"/>
-       </file>
-       <file role="php" name="Secant.php">
-        <replace type="package-info" from="@package_version@" to="version"/>
-       </file>
-      </dir> <!-- /Math/Numerical/RootFinding -->
-      <file role="php" name="RootFinding.php">
-       <replace type="package-info" from="@package_version@" to="version"/>
+     <file name="false_position.php" role="doc">
+      <tasks:replace from="@package_version@" to="version" type="package-info" />
+     </file>
+     <file name="fixed_point.php" role="doc">
+      <tasks:replace from="@package_version@" to="version" type="package-info" />
+     </file>
+     <file name="newton_raphson.php" role="doc">
+      <tasks:replace from="@package_version@" to="version" type="package-info" />
+     </file>
+     <file name="newton_raphson2.php" role="doc">
+      <tasks:replace from="@package_version@" to="version" type="package-info" />
+     </file>
+     <file name="ralston_rabinowitz.php" role="doc">
+      <tasks:replace from="@package_version@" to="version" type="package-info" />
+     </file>
+     <file name="secant.php" role="doc">
+      <tasks:replace from="@package_version@" to="version" type="package-info" />
+     </file>
+    </dir> <!-- /docs/examples -->
+    <file name="README.txt" role="doc">
+     <tasks:replace from="@package_version@" to="version" type="package-info" />
+    </file>
+   </dir> <!-- /docs -->
+   <dir name="Math">
+    <dir name="Numerical">
+     <dir name="RootFinding">
+      <file name="Bisection.php" role="php">
+       <tasks:replace from="@package_version@" to="version" type="package-info" />
       </file>
-     </dir> <!-- /Math/Numerical -->
-    </dir> <!-- /Math -->
-   </dir> <!-- / -->
-  </filelist>
- </release>
+      <file name="Common.php" role="php">
+       <tasks:replace from="@package_version@" to="version" type="package-info" />
+      </file>
+      <file name="FalsePosition.php" role="php">
+       <tasks:replace from="@package_version@" to="version" type="package-info" />
+      </file>
+      <file name="FixedPoint.php" role="php">
+       <tasks:replace from="@package_version@" to="version" type="package-info" />
+      </file>
+      <file name="NewtonRaphson.php" role="php">
+       <tasks:replace from="@package_version@" to="version" type="package-info" />
+      </file>
+      <file name="NewtonRaphson2.php" role="php">
+       <tasks:replace from="@package_version@" to="version" type="package-info" />
+      </file>
+      <file name="RalstonRabinowitz.php" role="php">
+       <tasks:replace from="@package_version@" to="version" type="package-info" />
+      </file>
+      <file name="Secant.php" role="php">
+       <tasks:replace from="@package_version@" to="version" type="package-info" />
+      </file>
+     </dir> <!-- /Math/Numerical/RootFinding -->
+     <file name="RootFinding.php" role="php">
+      <tasks:replace from="@package_version@" to="version" type="package-info" />
+     </file>
+    </dir> <!-- /Math/Numerical -->
+   </dir> <!-- /Math -->
+   <dir name="tests">
+    <dir name="Method">
+     <file name="BisectionTest.php" role="test">
+      <tasks:replace from="@package_version@" to="version" type="package-info" />
+     </file>
+     <file name="FalsePositionTest.php" role="test">
+      <tasks:replace from="@package_version@" to="version" type="package-info" />
+     </file>
+     <file name="FixedPointTest.php" role="test">
+      <tasks:replace from="@package_version@" to="version" type="package-info" />
+     </file>
+     <file name="NewtonRaphson2Test.php" role="test">
+      <tasks:replace from="@package_version@" to="version" type="package-info" />
+     </file>
+     <file name="NewtonRaphsonTest.php" role="test">
+      <tasks:replace from="@package_version@" to="version" type="package-info" />
+     </file>
+     <file name="RalstonRabinowitzTest.php" role="test">
+      <tasks:replace from="@package_version@" to="version" type="package-info" />
+     </file>
+     <file name="SecantTest.php" role="test">
+      <tasks:replace from="@package_version@" to="version" type="package-info" />
+     </file>
+    </dir> <!-- /tests/Method -->
+    <file name="AllTests.php" role="test">
+     <tasks:replace from="@package_version@" to="version" type="package-info" />
+    </file>
+    <file name="GeneralTest.php" role="test">
+     <tasks:replace from="@package_version@" to="version" type="package-info" />
+    </file>
+   </dir> <!-- /tests -->
+  </dir> <!-- / -->
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>4.3.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <phprelease />
  <changelog>
-   <release>
-    <version>0.1.0</version>
-    <date>2004-03-24</date>
-    <license>PHP License</license>
-    <state>alpha</state>
-    <notes>Initial release of Math_Numerical_RootFinding
-    </notes>
-   </release>
-   <release>
-    <version>0.2.0</version>
-    <date>2004-07-10</date>
-    <license>PHP License</license>
-    <state>alpha</state>
-    <notes>- Extremely API break.
-- Changed Math_Numerical_RoofFinding class 
-  type to container and abstract class.
-- Separated the method to a class.
-- Added new classes:
- o Math_Numerical_RootFinding_Bracketing
- o Math_Numerical_RootFinding_Open
- o Math_Numerical_RootFinding_bisection
- o Math_Numerical_RootFinding_falseposition
- o Math_Numerical_RootFinding_fixedpoint
- o Math_Numerical_RootFinding_newtonraphson
- o Math_Numerical_RootFinding_secant
- o Math_Numerical_RootFinding_ralstonrabinowitz
- o Math_Numerical_RootFinding_newtonraphson2
-- Fixed algorithm for all methods.
-- Added new support method Ralston and
-  Rabinowitz
-- Added new support method Newton-Raphson2
-- Divergency testing in Open methods, now
-  completely done for all of iteration.
-    </notes>
-   </release>
-   <release>
-    <version>0.3.0</version>
-    <date>2005-01-18</date>
-    <license>BSD License</license>
-    <state>alpha</state>
-    <notes>- changed license into BSD License
-- removed file &apos;Bracketing.php&apos;
-- removed file &apos;Open.php&apos;
-- introduce new abstract class
-  Math_Numerical_RootFinding_Common
-- renamed all method filenames to uppercase
-  first letter
-- fixed Bug #2897: Capitalization type in
-  falseposition.php
-- renamed all compute function names from
-  method name e.g bisection() into compute()
-- added new function infoCompute() to provide
-  information about compute function arguments
-- applied divergent testing into all methods
-    </notes>
-   </release>
-   <release>
-    <version>1.0.0</version>
-    <date>2006-02-01</date>
-    <license>BSD License</license>
-    <state>stable</state>
-    <notes>* Fixed method name capitol bug in Math_Numerical_RootFinding::factory(), thanks to Keith Palmer Jr.
-* Now all method driver names are using insensitive-case alias
-* Converted all header comment block into current coding standard
-* Added Matthew Fonda as package co-lead
-* This is first stable version release
-    </notes>
-   </release>
+  <release>
+   <version>
+    <release>1.1.0a1</release>
+    <api>1.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2008-11-10</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD License</license>
+   <notes>* Request #2897: added new parameter $guess to validateEqFunction()
+* Added unit tests
+* Examples files renamed to lower case</notes>
+  </release>
  </changelog>
 </package>
