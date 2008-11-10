@@ -10,54 +10,31 @@
  * PHP versions 4 and 5
  *
  * LICENSE:
+ * Copyright (c) 2008 Firman Wandayandi <firman@php.net>
  *
- * BSD License
+ * This source file is subject to the BSD License license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.opensource.org/licenses/bsd-license.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to pear-dev@list.php.net so we can send you a copy immediately.
  *
- * Copyright (c) 2004-2006 Firman Wandayandi
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer.
- * 2. Redistributions in binary form must reproduce the above
- *    copyright notice, this list of conditions and the following
- *    disclaimer in the documentation and/or other materials provided
- *    with the distribution.
- * 3. Neither the name of Firman Wandayandi nor the names of
- *    contributors may be used to endorse or promote products derived
- *    from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
- * FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
- * COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
- * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
- * BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
- * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
- * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- *
- * @category Math
- * @package Math_Numerical_RootFinding
- * @subpackage Methods
- * @author Firman Wandayandi <firman@php.net>
- * @copyright Copyright (c) 2004-2006 Firman Wandayandi
- * @license http://www.opensource.org/licenses/bsd-license.php
- *          BSD License
- * @version CVS: $Id$
+ * @category    Math
+ * @package     Math_Numerical_RootFinding
+ * @subpackage  Methods
+ * @author      Firman Wandayandi <firman@php.net>
+ * @copyright   Copyright (c) 2004-2008 Firman Wandayandi
+ * @license     http://www.opensource.org/licenses/bsd-license.php
+ *              BSD License
+ * @version     CVS: $Id$
  */
 
 // }}}
 // {{{ Dependencies
 
 /**
- * Load PEAR for errors handling.
+ * PEAR
  */
 require_once 'PEAR.php';
 
@@ -68,14 +45,14 @@ require_once 'PEAR.php';
  * Abstract class contains common properties and methods for specified
  * method classes.
  *
- * @category Math
- * @package Math_Numerical_RootFinding
- * @subpackage Methods
- * @author Firman Wandayandi <firman@php.net>
- * @copyright Copyright (c) 2004-2006 Firman Wandayandi
- * @license http://www.opensource.org/licenses/bsd-license.php
- *          BSD License
- * @version Release: @package_version@
+ * @category    Math
+ * @package     Math_Numerical_RootFinding
+ * @subpackage  Methods
+ * @author      Firman Wandayandi <firman@php.net>
+ * @copyright   Copyright (c) 2004-2008 Firman Wandayandi
+ * @license     http://www.opensource.org/licenses/bsd-license.php
+ *              BSD License
+ * @version     Release: @package_version@
  * @abstract
  */
 class Math_Numerical_RootFinding_Common
@@ -84,12 +61,12 @@ class Math_Numerical_RootFinding_Common
 
     /**
      * Options.
-     * Known options:
+     * Available options:
      * <pre>
-     *   max_iteration  int    Maximum iteration count.
-     *   err_tolerance  float  Error tolerance.
-     *   divergent_skip  bool  Flag whether to skip the current iteration if
-     *                         divergent rows detected or not.
+     *   max_iteration   int    Maximum iteration count.
+     *   err_tolerance   float  Error tolerance.
+     *   divergent_skip  bool   Flag whether to skip the current iteration if
+     *                          divergent rows detected or not.
      * </pre>
      *
      * @var array
@@ -131,10 +108,10 @@ class Math_Numerical_RootFinding_Common
     /**
      * Constructor.
      *
-     * @param array $options (optional) Options.
+     * @param   array   $options (optional)  Options.
      *
-     * @access public
-     * @see set()
+     * @access  public
+     * @see     set()
      */
     function Math_Numerical_RootFinding_Common($options = null)
     {
@@ -151,15 +128,14 @@ class Math_Numerical_RootFinding_Common
      *
      * Set a single option or multiple options.
      *
-     * @param mixed $option A string with option name as value for
-     *                      single option or An associative array contains
-     *                      options array('<option>' => <value>) for multiple
-     *                      options.
-     * @param mixed $value (optional) Option value. Require when $option is
-     *                                string (single option mode).
+     * @param   mixed   $option  A string with option name as value for  single
+     *                           option or An associative array contains options
+     *                           array('<option>' => <value>) for multiple options.
+     * @param   mixed   $value  (optional)  Option value. Require when $option is
+     *                                      string (single option mode).
      *
-     * @return bool|PEAR_Error TRUE on success or PEAR_Error on failure.
-     * @access public
+     * @return  bool|PEAR_Error  TRUE on success or PEAR_Error on failure.
+     * @access  public
      */
     function set($option, $value = null)
     {
@@ -215,8 +191,8 @@ class Math_Numerical_RootFinding_Common
     /**
      * Get root value.
      *
-     * @return float Root value.
-     * @access public
+     * @return  float   Root value.
+     * @access  public
      */
     function getRoot()
     {
@@ -229,8 +205,8 @@ class Math_Numerical_RootFinding_Common
     /**
      * Get iteration count.
      *
-     * @return int Iteration count.
-     * @access public
+     * @return  int     Iteration count.
+     * @access  public
      */
     function getIterationCount()
     {
@@ -243,8 +219,8 @@ class Math_Numerical_RootFinding_Common
     /**
      * Get epsilon error.
      *
-     * @return float Epsilon error.
-     * @access public
+     * @return  float   Epsilon error.
+     * @access  public
      */
     function getEpsError()
     {
@@ -260,10 +236,10 @@ class Math_Numerical_RootFinding_Common
      * Compare 3 rows of last epsilon errors, if no.3 bigger than no.2 and
      * no.2 bigger than no.1, rows are divergent.
      *
-     * @param array $epsilonErrors Epsilon errors collection
+     * @param   array   $epsilonErrors Epsilon errors collection
      *
-     * @return bool TRUE if divergent, otherwise FALSE
-     * @access public
+     * @return  bool    TRUE if divergent, otherwise FALSE
+     * @access  public
      */
     function isDivergentRows($epsErrors)
     {
@@ -304,16 +280,17 @@ class Math_Numerical_RootFinding_Common
      * Simple function to know the whether equation function or object/method
      * callback is working.
      *
-     * @param string $eqFunction Equation function name or object method tuple.
+     * @param   string  $eqFunction  Equation function name or object method tuple.
+     * @param   float   $guess       (optional) Initial guess value, default is 1.
      *
-     * @return bool|PEAR_Error TRUE on success or PEAR_Error on failure.
-     * @access public
-     * @see getEqResult()
+     * @return  bool|PEAR_Error      TRUE on success or PEAR_Error on failure.
+     * @access  public
+     * @see     getEqResult()
      * @static
      */
-    function validateEqFunction($eqFunction)
+    function validateEqFunction($eqFunction, $guess = 1)
     {
-        $err = Math_Numerical_RootFinding_Common::getEqResult($eqFunction, 1);
+        $err = Math_Numerical_RootFinding_Common::getEqResult($eqFunction, $guess);
         if(PEAR::isError($err)) {
             return $err;
         }
@@ -326,11 +303,11 @@ class Math_Numerical_RootFinding_Common
     /**
      * Compute a value using given equation function or object/method.
      *
-     * @param callback $eqFunction Equation function name or object method tuple.
-     * @param float $varValue Variable value.
+     * @param   callback    $eqFunction  Equation function name or object method tuple.
+     * @param   float       $varValue    Variable value.
      *
-     * @return float|PEAR_Error result value on success, PEAR_Error on failure.
-     * @access public
+     * @return  float|PEAR_Error         result value on success, PEAR_Error on failure.
+     * @access  public
      * @static
      */
     function getEqResult($eqFunction, $varValue)
