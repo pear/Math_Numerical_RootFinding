@@ -74,7 +74,7 @@ class Math_Numerical_RootFinding_Common
      */
     var $options = array(
         'max_iteration'  => 30,
-        'err_tolerance'  => 1E-005,
+        'err_tolerance'  => 0.00001,    // Equals to 1.0E-5
         'divergent_skip' => true
     );
 
@@ -164,6 +164,26 @@ class Math_Numerical_RootFinding_Common
                 return PEAR::raiseError('Unknown option \'' . $option . '\'');
             }
         }
+    }
+
+    // }}}
+    // {{{ get()
+
+    /**
+     * Get the option value.
+     *
+     * @param   $option  Option name.
+     *
+     * @return  mixed    Value of the option or PEAR_Error on failure.
+     * @since            Method available since Release 1.1.0a1
+     */
+    function get($option)
+    {
+        if (!array_key_exists($option, $this->options)) {
+            return PEAR::raiseError('Unknown option \'' . $option . '\'');
+        }
+
+        return $this->options[$option];
     }
 
     // }}}
