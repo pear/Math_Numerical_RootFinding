@@ -1,8 +1,4 @@
 <?php
-/* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4 foldmethod=marker: */
-
-// {{{ Header
-    
 /**
  * File contains Math_Numerical_RootFinding base class.
  *
@@ -19,26 +15,21 @@
  * obtain it through the world-wide-web, please send an email
  * to pear-dev@list.php.net so we can send you a copy immediately.
  *
- * @category    Math
- * @package     Math_Numerical_RootFinding
- * @author      Firman Wandayandi <firman@php.net>
- * @copyright   Copyright (c) 2004-2008 Firman Wandayandi
- * @license     http://www.opensource.org/licenses/bsd-license.php
- *              BSD License
- * @version     CVS: $Id$
+ * @category  Math
+ * @package   Math_Numerical_RootFinding
+ * @author    Firman Wandayandi <firman@php.net>
+ * @copyright Copyright (c) 2004-2008 Firman Wandayandi
+ * @license   http://www.opensource.org/licenses/bsd-license.php
+ *            BSD License
+ * @version   CVS: $Id$
+ * @link      http://pear.php.net/package/Math_Numerical_RootFinding
  */
 
-// }}}
-// {{{ Dependencies
-    
 /**
  * PEAR
  */
 require_once 'PEAR.php';
 
-// }}}
-// {{{ Global variables
-    
 /**
  * Method driver aliases in order to create the prety file names,
  * also for insensitive-case of method name calls.
@@ -56,21 +47,19 @@ $GLOBALS['_Math_Numerical_RootFinding_drivers'] = array(
     'secant'            => 'Secant'
 );
 
-// }}}
-// {{{ Class: Math_Numerical_RootFinding
-    
 /**
  * Math_Numerical_RootFinding base class.
  *
  * This class intended for build API structure and abstract class members.
  *
- * @category    Math
- * @package     Math_Numerical_RootFinding
- * @author      Firman Wandayandi <firman@php.net>
- * @copyright   Copyright (c) 2004-2008 Firman Wandayandi
- * @license     http://www.opensource.org/licenses/bsd-license.php
- *              BSD License
- * @version     Release: @package_version@
+ * @category  Math
+ * @package   Math_Numerical_RootFinding
+ * @author    Firman Wandayandi <firman@php.net>
+ * @copyright Copyright (c) 2004-2008 Firman Wandayandi
+ * @license   http://www.opensource.org/licenses/bsd-license.php
+ *            BSD License
+ * @version   Release: @package_version@
+ * @link      http://pear.php.net/package/Math_Numerical_RootFinding
  */
 class Math_Numerical_RootFinding
 {
@@ -79,11 +68,12 @@ class Math_Numerical_RootFinding
     /**
      * Create new instance of RootFinding method class.
      *
-     * @param   string  $method   Method name.
-     * @param   array   $options  (optional) Options (options is available inspecified method class).
+     * @param string $method  Method name.
+     * @param array  $options (optional) Options (options is available inspecified method
+     *               class).
      *
-     * @return  object            New method's class on success or PEAR_Error on failure.
-     * @access  public
+     * @return object New method's class on success or PEAR_Error on failure.
+     * @access public
      * @static
      */
     function &factory($method, $options = null)
@@ -127,7 +117,6 @@ class Math_Numerical_RootFinding
     // }}}
 }
 
-// }}}
 
 /*
  * Local variables:
