@@ -1,11 +1,7 @@
 <?php
-/* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4 foldmethod=marker: */
-
-// {{{ Header
-
 /**
- * File contains abstract class Math_Numerical_RootFinding_Common for all
- * method classes.
+ * File contains abstract class Math_Numerical_RootFinding_Common for all method
+ * classes.
  *
  * PHP versions 4 and 5
  *
@@ -20,39 +16,31 @@
  * obtain it through the world-wide-web, please send an email
  * to pear-dev@list.php.net so we can send you a copy immediately.
  *
- * @category    Math
- * @package     Math_Numerical_RootFinding
- * @subpackage  Methods
- * @author      Firman Wandayandi <firman@php.net>
- * @copyright   Copyright (c) 2004-2008 Firman Wandayandi
- * @license     http://www.opensource.org/licenses/bsd-license.php
- *              BSD License
- * @version     CVS: $Id$
+ * @category   Math
+ * @package    Math_Numerical_RootFinding
+ * @subpackage Methods
+ * @author     Firman Wandayandi <firman@php.net>
+ * @copyright  2004-2008 Firman Wandayandi
+ * @license    http://www.opensource.org/licenses/bsd-license.php BSD License
+ * @version    CVS: $Id$
  */
-
-// }}}
-// {{{ Dependencies
 
 /**
  * PEAR
  */
 require_once 'PEAR.php';
 
-// }}}
-// {{{ Class: Math_Numerical_RootFinding_Common
-
 /**
- * Abstract class contains common properties and methods for specified
- * method classes.
+ * Abstract class contains common properties and methods for specified method
+ * classes.
  *
- * @category    Math
- * @package     Math_Numerical_RootFinding
- * @subpackage  Methods
- * @author      Firman Wandayandi <firman@php.net>
- * @copyright   Copyright (c) 2004-2008 Firman Wandayandi
- * @license     http://www.opensource.org/licenses/bsd-license.php
- *              BSD License
- * @version     Release: @package_version@
+ * @category   Math
+ * @package    Math_Numerical_RootFinding
+ * @subpackage Methods
+ * @author     Firman Wandayandi <firman@php.net>
+ * @copyright  2004-2008 Firman Wandayandi
+ * @license    http://www.opensource.org/licenses/bsd-license.php BSD License
+ * @version    Release: @package_version@
  * @abstract
  */
 class Math_Numerical_RootFinding_Common
@@ -63,10 +51,10 @@ class Math_Numerical_RootFinding_Common
      * Options.
      * Available options:
      * <pre>
-     *   max_iteration   int    Maximum iteration count.
-     *   err_tolerance   float  Error tolerance.
-     *   divergent_skip  bool   Flag whether to skip the current iteration if
-     *                          divergent rows detected or not.
+     *  max_iteration  int   Maximum iteration count.
+     *  err_tolerance  float Error tolerance.
+     *  divergent_skip bool  Flag whether to skip the current iteration if divergent
+     *                       rows detected or not.
      * </pre>
      *
      * @var array
@@ -74,7 +62,7 @@ class Math_Numerical_RootFinding_Common
      */
     var $options = array(
         'max_iteration'  => 30,
-        'err_tolerance'  => 0.00001,    // Equals to 1.0E-5
+        'err_tolerance'  => 0.00001, // Equals to 1.0E-5
         'divergent_skip' => true
     );
 
@@ -108,10 +96,10 @@ class Math_Numerical_RootFinding_Common
     /**
      * Constructor.
      *
-     * @param   array   $options (optional)  Options.
+     * @param array $options (optional) Options.
      *
-     * @access  public
-     * @see     set()
+     * @access public
+     * @see    set()
      */
     function Math_Numerical_RootFinding_Common($options = null)
     {
@@ -128,14 +116,15 @@ class Math_Numerical_RootFinding_Common
      *
      * Set a single option or multiple options.
      *
-     * @param   mixed   $option  A string with option name as value for  single
-     *                           option or An associative array contains options
-     *                           array('<option>' => <value>) for multiple options.
-     * @param   mixed   $value  (optional)  Option value. Require when $option is
-     *                                      string (single option mode).
+     * @param mixed $option           A string with option name as value for  single
+     *                                option or an associative array contains
+     *                                options. array('<option>' => <value>) for
+     *                                multiple options.
+     * @param mixed $value (optional) Option value. Require when $option is string
+     *                                (single option mode).
      *
-     * @return  bool|PEAR_Error  TRUE on success or PEAR_Error on failure.
-     * @access  public
+     * @return bool|PEAR_Error TRUE on success or PEAR_Error on failure.
+     * @access public
      */
     function set($option, $value = null)
     {
@@ -172,10 +161,10 @@ class Math_Numerical_RootFinding_Common
     /**
      * Get the option value.
      *
-     * @param   $option  Option name.
+     * @param $option Option name.
      *
-     * @return  mixed    Value of the option or PEAR_Error on failure.
-     * @since            Method available since Release 1.1.0a1
+     * @return mixed Value of the option or PEAR_Error on failure.
+     * @since Method available since Release 1.1.0a1
      */
     function get($option)
     {
@@ -211,8 +200,8 @@ class Math_Numerical_RootFinding_Common
     /**
      * Get root value.
      *
-     * @return  float   Root value.
-     * @access  public
+     * @return float Root value.
+     * @access public
      */
     function getRoot()
     {
@@ -225,8 +214,8 @@ class Math_Numerical_RootFinding_Common
     /**
      * Get iteration count.
      *
-     * @return  int     Iteration count.
-     * @access  public
+     * @return int Iteration count.
+     * @access public
      */
     function getIterationCount()
     {
@@ -239,8 +228,8 @@ class Math_Numerical_RootFinding_Common
     /**
      * Get epsilon error.
      *
-     * @return  float   Epsilon error.
-     * @access  public
+     * @return float Epsilon error.
+     * @access public
      */
     function getEpsError()
     {
@@ -253,13 +242,13 @@ class Math_Numerical_RootFinding_Common
     /**
      * Detect for divergent rows.
      *
-     * Compare 3 rows of last epsilon errors, if no.3 bigger than no.2 and
-     * no.2 bigger than no.1, rows are divergent.
+     * Compare 3 rows of last epsilon errors, if no.3 bigger than no.2 and no.2
+     * bigger than no.1, rows are divergent.
      *
-     * @param   array   $epsilonErrors Epsilon errors collection
+     * @param array $epsilonErrors Epsilon errors collection
      *
-     * @return  bool    TRUE if divergent, otherwise FALSE
-     * @access  public
+     * @return bool TRUE if divergent, otherwise FALSE
+     * @access public
      */
     function isDivergentRows($epsErrors)
     {
@@ -300,12 +289,12 @@ class Math_Numerical_RootFinding_Common
      * Simple function to know the whether equation function or object/method
      * callback is working.
      *
-     * @param   string  $eqFunction  Equation function name or object method tuple.
-     * @param   float   $guess       (optional) Initial guess value, default is 1.
+     * @param string $eqFunction       Equation function name or object method tuple.
+     * @param float  $guess (optional) Initial guess value, default is 1.
      *
-     * @return  bool|PEAR_Error      TRUE on success or PEAR_Error on failure.
-     * @access  public
-     * @see     getEqResult()
+     * @return bool|PEAR_Error TRUE on success or PEAR_Error on failure.
+     * @access public
+     * @see getEqResult()
      * @static
      */
     function validateEqFunction($eqFunction, $guess = 1)
@@ -323,11 +312,11 @@ class Math_Numerical_RootFinding_Common
     /**
      * Compute a value using given equation function or object/method.
      *
-     * @param   callback    $eqFunction  Equation function name or object method tuple.
-     * @param   float       $varValue    Variable value.
+     * @param callback $eqFunction Equation function name or object method tuple.
+     * @param float    $varValue   Variable value.
      *
-     * @return  float|PEAR_Error         result value on success, PEAR_Error on failure.
-     * @access  public
+     * @return float|PEAR_Error result value on success, PEAR_Error on failure.
+     * @access public
      * @static
      */
     function getEqResult($eqFunction, $varValue)
@@ -342,8 +331,6 @@ class Math_Numerical_RootFinding_Common
 
     // }}}
 }
-
-// }}}
 
 /*
  * Local variables:
