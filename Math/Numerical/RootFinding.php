@@ -18,9 +18,8 @@
  * @category  Math
  * @package   Math_Numerical_RootFinding
  * @author    Firman Wandayandi <firman@php.net>
- * @copyright Copyright (c) 2004-2008 Firman Wandayandi
- * @license   http://www.opensource.org/licenses/bsd-license.php
- *            BSD License
+ * @copyright 2004-2008 Firman Wandayandi
+ * @license   http://www.opensource.org/licenses/bsd-license.php BSD License
  * @version   CVS: $Id$
  * @link      http://pear.php.net/package/Math_Numerical_RootFinding
  */
@@ -55,7 +54,7 @@ $GLOBALS['_Math_Numerical_RootFinding_drivers'] = array(
  * @category  Math
  * @package   Math_Numerical_RootFinding
  * @author    Firman Wandayandi <firman@php.net>
- * @copyright Copyright (c) 2004-2008 Firman Wandayandi
+ * @copyright 2004-2008 Firman Wandayandi
  * @license   http://www.opensource.org/licenses/bsd-license.php
  *            BSD License
  * @version   Release: @package_version@
@@ -68,9 +67,9 @@ class Math_Numerical_RootFinding
     /**
      * Create new instance of RootFinding method class.
      *
-     * @param string $method  Method name.
-     * @param array  $options (optional) Options (options is available inspecified method
-     *               class).
+     * @param string $method             Method name.
+     * @param array  $options (optional) Options (options is available inspecified
+     *                                   method class).
      *
      * @return object New method's class on success or PEAR_Error on failure.
      * @access public
