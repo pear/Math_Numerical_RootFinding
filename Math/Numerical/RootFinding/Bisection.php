@@ -156,8 +156,7 @@ class Math_Numerical_RootFinding_Bisection extends Math_Numerical_RootFinding_Co
 
             // Detect for divergent rows.
             if ($this->isDivergentRows($epsErrors) &&
-                $this->options['divergent_skip'])
-            {
+                $this->options['divergent_skip']) {
                 return PEAR::raiseError(
                          'Iteration skipped, divergent rows detected'
                        );

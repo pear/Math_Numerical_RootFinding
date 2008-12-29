@@ -157,8 +157,7 @@ extends Math_Numerical_RootFinding_Common
 
             // Detect for divergent rows.
             if ($this->isDivergentRows($epsErrors) &&
-                $this->options['divergent_skip'])
-            {
+                $this->options['divergent_skip']) {
                 return PEAR::raiseError(
                          'Iteration skipped, divergent rows detected'
                        );
