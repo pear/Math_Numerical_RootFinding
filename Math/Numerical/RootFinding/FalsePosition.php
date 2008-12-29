@@ -153,7 +153,7 @@ extends Math_Numerical_RootFinding_Common
 
             // Compute approximation error.
             $this->epsError = abs(($xN - $xR) / $xN);
-            $epsErrors[] = $this->epsError;
+            $epsErrors[]    = $this->epsError;
 
             // Detect for divergent rows.
             if ($this->isDivergentRows($epsErrors) &&

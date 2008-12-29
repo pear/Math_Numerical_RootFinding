@@ -1,8 +1,4 @@
 <?php
-/* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4 foldmethod=marker: */
-
-// {{{ Header
-
 /**
  * Driver file contains Math_Numerical_RootFinding_Bisection class to provide
  * Newton-Raphson 2 method root finding calculation.
@@ -20,38 +16,32 @@
  * obtain it through the world-wide-web, please send an email
  * to pear-dev@list.php.net so we can send you a copy immediately.
  *
- * @category    Math
- * @package     Math_Numerical_RootFinding
- * @subpackage  Methods
- * @author      Firman Wandayandi <firman@php.net>
- * @copyright   Copyright (c) 2004-2008 Firman Wandayandi
- * @license     http://www.opensource.org/licenses/bsd-license.php
- *              BSD License
- * @version     CVS: $Id$
+ * @category   Math
+ * @package    Math_Numerical_RootFinding
+ * @subpackage Methods
+ * @author     Firman Wandayandi <firman@php.net>
+ * @copyright  Copyright (c) 2004-2008 Firman Wandayandi
+ * @license    http://www.opensource.org/licenses/bsd-license.php BSD License
+ * @link       http://pear.php.net/package/Math_Numerical_RootFinding
+ * @version    CVS: $Id$
  */
-
-// }}}
-// {{{ Dependencies
 
 /**
  * Math_Numerical_RootFinding_Common
  */
 require_once 'Math/Numerical/RootFinding/Common.php';
 
-// }}}
-// {{{ Class: Math_Numerical_RootFinding_NewtonRaphson2
-
 /**
  * Newton-Raphson 2 method class.
  *
- * @category    Math
- * @package     Math_Numerical_RootFinding
- * @subpackage  Methods
- * @author      Firman Wandayandi <firman@php.net>
- * @copyright   Copyright (c) 2004-2008 Firman Wandayandi
- * @license     http://www.opensource.org/licenses/bsd-license.php
- *              BSD License
- * @version     Release: @package_version@
+ * @category   Math
+ * @package    Math_Numerical_RootFinding
+ * @subpackage Methods
+ * @author     Firman Wandayandi <firman@php.net>
+ * @copyright  2004-2008 Firman Wandayandi
+ * @license    http://www.opensource.org/licenses/bsd-license.php BSD License
+ * @link       http://pear.php.net/package/Math_Numerical_RootFinding
+ * @version    Release: @package_version@
  */
 class Math_Numerical_RootFinding_NewtonRaphson2
 extends Math_Numerical_RootFinding_Common
@@ -61,10 +51,10 @@ extends Math_Numerical_RootFinding_Common
     /**
      * Constructor.
      *
-     * @param   array   $options (optional)  Options.
+     * @param array $options (optional) Options.
      *
-     * @access  public
-     * @see     Math_Numerical_RootFinding_Common::Math_Numerical_RootFinding_Common()
+     * @access public
+     * @see Math_Numerical_RootFinding_Common::Math_Numerical_RootFinding_Common()
      */
     function Math_Numerical_RootFinding_NewtonRaphson2($options = null)
     {
@@ -78,6 +68,7 @@ extends Math_Numerical_RootFinding_Common
      * Print out parameters description for compute() function.
      *
      * @access public
+     * @return void
      */
     function infoCompute()
     {
@@ -107,34 +98,43 @@ extends Math_Numerical_RootFinding_Common
     /**
      * Newton-Raphson method for calculate double root (twin root).
      *
-     * @param   callback    $fxFunction    Callback f(x) equation function or object/method tuple.
-     * @param   callback    $dfx1Function  Callback f'(x) equation function or object/method tuple.
-     * @param   callback    $dfx2Function  Callback f''(x) equation function or object/method tuple.
-     * @param   float       $xR            Initial guess.
+     * @param callback $fxFunction   Callback f(x) equation function or object/method
+     *                               tuple.
+     * @param callback $dfx1Function Callback f'(x) equation function or
+     *                               object/method tuple.
+     * @param callback $dfx2Function Callback f''(x) equation function or
+     *                               object/method tuple.
+     * @param float    $xR           Initial guess.
      *
-     * @return  float|PEAR_Error           Root value on success or PEAR_Error on failure.
-     * @access  public
-     * @see     Math_Numerical_RootFinding_Common::validateEqFunction()
-     * @see     Math_Numerical_RootFinding_Common::getEqResult()
-     * @see     Math_Numerical_RootFinding_Common::isDivergentRow()
-     * @see     Math_Numerical_RootFinding_Newtonraphson::compute()
+     * @return float|PEAR_Error Root value on success or PEAR_Error on failure.
+     * @access public
+     * @see Math_Numerical_RootFinding_Common::validateEqFunction()
+     * @see Math_Numerical_RootFinding_Common::getEqResult()
+     * @see Math_Numerical_RootFinding_Common::isDivergentRow()
+     * @see Math_Numerical_RootFinding_Newtonraphson::compute()
      */
     function compute($fxFunction, $dfx1Function, $dfx2Function, $xR)
     {
         // Validate f(x) equation function.
-        $err = Math_Numerical_RootFinding_Common::validateEqFunction($fxFunction, $xR);
+        $err = Math_Numerical_RootFinding_Common::validateEqFunction(
+                 $fxFunction, $xR
+               );
         if (PEAR::isError($err)) {
             return $err;
         }
 
         // Validate f'(x) equation function.
-        $err = Math_Numerical_RootFinding_Common::validateEqFunction($dfx1Function, $xR);
+        $err = Math_Numerical_RootFinding_Common::validateEqFunction(
+                 $dfx1Function, $xR
+               );
         if (PEAR::isError($err)) {
             return $err;
         }
 
         // Validate f''(x) equation function.
-        $err = Math_Numerical_RootFinding_Common::validateEqFunction($dfx2Function, $xR);
+        $err = Math_Numerical_RootFinding_Common::validateEqFunction(
+                 $dfx2Function, $xR
+               );
         if (PEAR::isError($err)) {
             return $err;
         }
@@ -152,10 +152,14 @@ extends Math_Numerical_RootFinding_Common
             $fxR = Math_Numerical_RootFinding_Common::getEqResult($fxFunction, $xR);
 
             // Calculate f'(x[i]), where: x[i] = $xR.
-            $d1xR = Math_Numerical_RootFinding_Common::getEqResult($dfx1Function, $xR);
+            $d1xR = Math_Numerical_RootFinding_Common::getEqResult(
+                      $dfx1Function, $xR
+                    );
 
             // Calculate f''(x[i]), where: x[i] = $xR.
-            $d2xR = Math_Numerical_RootFinding_Common::getEqResult($dfx2Function, $xR);
+            $d2xR = Math_Numerical_RootFinding_Common::getEqResult(
+                      $dfx2Function, $xR
+                    );
 
             // Avoid division by zero.
             if (pow($d1xR, 2) - ($fxR * $d2xR) == 0) {
@@ -173,13 +177,14 @@ extends Math_Numerical_RootFinding_Common
 
             // Compute error.
             $this->epsError = abs(($xN - $xR) / $xN);
-            $epsErrors[] = $this->epsError;
+            $epsErrors[]    = $this->epsError;
 
             // Detect for divergent rows.
             if ($this->isDivergentRows($epsErrors) &&
-                $this->options['divergent_skip'])
-            {
-                return PEAR::raiseError('Iteration skipped, divergent rows detected');
+                $this->options['divergent_skip']) {
+                return PEAR::raiseError(
+                         'Iteration skipped, divergent rows detected'
+                       );
                 break;
             }
 
@@ -199,8 +204,6 @@ extends Math_Numerical_RootFinding_Common
 
     // }}}
 }
-
-// }}}
 
 /*
  * Local variables:
