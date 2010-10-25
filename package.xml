@@ -28,8 +28,8 @@ Supported methods:
  <date>2010-10-25</date>
  <time>23:01:11</time>
  <version>
-  <release>1.1</release>
-  <api>1.0</api>
+  <release>1.1.0</release>
+  <api>1.0.0</api>
  </version>
  <stability>
   <release>alpha</release>
@@ -89,7 +89,7 @@ Math_Numerical_RootFinding_Bisection::get - firman
   <release>
    <version>
     <release>1.1.0a1</release>
-    <api>1.0</api>
+    <api>1.0.0</api>
    </version>
    <stability>
     <release>alpha</release>
@@ -105,8 +105,8 @@ Math_Numerical_RootFinding_Bisection::get - firman
   </release>
   <release>
    <version>
-    <release>1.1</release>
-    <api>1.0</api>
+    <release>1.1.0</release>
+    <api>1.0.0</api>
    </version>
    <stability>
     <release>alpha</release>
