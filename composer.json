@@ -13,7 +13,7 @@
     ],
     "autoload": {
         "psr-0": {
-            "Math_Numerical_RootFinding": "./"
+            "Math": "./"
         }
     },
     "description": "More info available on: http://pear.php.net/package/Math_Numerical_RootFinding",
