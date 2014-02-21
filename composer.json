@@ -1,0 +1,36 @@
+{
+    "authors": [
+        {
+            "email": "firman@php.net",
+            "name": "Firman Wandayandi",
+            "role": "Lead"
+        },
+        {
+            "email": "mfonda@php.net",
+            "name": "Matthew Fonda",
+            "role": "Lead"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "Math": "./"
+        }
+    },
+    "description": "More info available on: http://pear.php.net/package/Math_Numerical_RootFinding",
+    "include-path": [
+        "./"
+    ],
+    "license": "BSD License",
+    "name": "pear/math_numerical_rootfinding",
+    "support": {
+        "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=Math_Numerical_RootFinding",
+        "source": "https://github.com/pear/Math_Numerical_RootFinding"
+    },
+    "type": "library",
+    "require": {
+        "pear/pear_exception": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    }
+}
